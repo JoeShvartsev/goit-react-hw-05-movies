@@ -1,0 +1,11 @@
+.div{
+  display: flex;
+  flex-direction: column;
+}
+.btn {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width:20px;
+  height:15px
+}

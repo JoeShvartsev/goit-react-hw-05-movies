@@ -1,31 +1,43 @@
-import { React } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SearchBar } from 'components/SearchBar/SearchBar';
-import {MoviesList} from 'components/MoviesList/MoviesList'
-import {getByQuerry} from 'Api/fetchByQuerry'
-import { useState, useEffect } from 'react';
-
+import { MoviesList } from 'components/MoviesList/MoviesList';
+import { getByQuerry } from 'Api/fetchByQuerry';
+import {  useSearchParams } from 'react-router-dom';
 
 export const MoviesPage = () => {
-  const [movie,setMovie]=useState([])
-  const [querry,setQuerry]=useState([])
-  useEffect(() => {
-    fetchData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [querry]);
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  let searchValue = searchParams.get('search');
+  // useEffect(() => {
+  //   !searchValue && setSearchParams({});
+  // }, [searchValue, setSearchParams]);
 
   const fetchData = async () => {
-    const data = await getByQuerry(querry);
-    
-    setMovie(data);
+    if (searchValue) {
+      try {
+        const data = await getByQuerry(searchValue);
+        setMovies(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
   };
-  const onHandleSubmit =(e)=>{e.preventDefault();
-    const querryWord = e.target[1].value;
-    setQuerry(querryWord);
-    e.target[1].value = "";}
+
+  const onHandleSubmit = e => {
+    e.preventDefault();
+    fetchData();
+    searchParams.set('search', '')
+    
+  };
+
   return (
     <div>
-      <SearchBar onSubmit={onHandleSubmit}></SearchBar>
-      <MoviesList movies={movie}></MoviesList>
+      <SearchBar
+        onSubmit={onHandleSubmit}
+        setSearchParams={setSearchParams}
+        searchValue={searchValue}
+      />
+      <MoviesList movies={movies} />
     </div>
   );
 };

@@ -1,7 +1,12 @@
 import { React } from 'react';
 import css from './SearchBar.module.css';
 
-export const SearchBar = ({onSubmit}) => {
+export const SearchBar = ({ onSubmit, setSearchParams, searchValue }) => {
+  
+  const handleChange = ({ target: { value } }) => {
+    setSearchParams({ search: value });
+  };
+  
   return (
     <div className={css.searchbar}>
       <form className={css.searchform} onSubmit={onSubmit}>
@@ -15,6 +20,8 @@ export const SearchBar = ({onSubmit}) => {
           autoComplete="off"
           autoFocus
           placeholder="Search movie"
+          onChange={handleChange}
+          value={searchValue || ''}
         />
       </form>
     </div>
