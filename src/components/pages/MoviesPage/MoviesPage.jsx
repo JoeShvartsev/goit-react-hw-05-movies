@@ -8,9 +8,7 @@ export const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   let searchValue = searchParams.get('search');
-  // useEffect(() => {
-  //   !searchValue && setSearchParams({});
-  // }, [searchValue, setSearchParams]);
+ 
 
   const fetchData = async () => {
     if (searchValue) {
