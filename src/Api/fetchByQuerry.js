@@ -16,6 +16,7 @@ export async function getByQuerry(querry) {
         language: "en-US",
       },
     });
+    console.log(response.data.results)
     return response.data.results;
   } catch (error) {
     console.error(error);

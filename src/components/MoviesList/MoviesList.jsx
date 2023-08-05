@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 export const MoviesList = ({ movies }) => {
   const location = useLocation()
-  console.log(location)
   return (
     <div>
       <ul>

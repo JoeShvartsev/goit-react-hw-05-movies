@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import React, { lazy, Suspense } from 'react';
 import { HomePage } from "./pages/HomePage/HomePage";
 import { MoviesPage } from "./pages/MoviesPage/MoviesPage";
 import { Layout } from "./Layaout/Layout";
@@ -7,8 +8,18 @@ import { MovieDetails } from "./pages/MovieDetails/MovieDetails";
 import { Cast } from "./Cast/Cast";
 import { Review } from "./Review/Review";
 
+// const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+// const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
+// const Layout = lazy(() => import("./Layaout/Layout"));
+// const ErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage"));
+// const MovieDetails = lazy(() => import("./pages/MovieDetails/MovieDetails"));
+// const Cast = lazy(() => import("./Cast/Cast"));
+// const Review = lazy(() => import("./Review/Review"));
+
+
 export const App = () => {
   return (
+    // <Suspense>
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<HomePage/>}/>
@@ -20,5 +31,6 @@ export const App = () => {
       </Route>
       <Route path="*" element={<ErrorPage/>}/>
     </Routes>
+    
   );
 };

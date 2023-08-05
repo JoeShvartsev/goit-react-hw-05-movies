@@ -16,7 +16,7 @@ export async function getTrandingDay() {
         language: "en-US",
       },
     });
-
+    console.log(response.data.results)
     return response.data.results;
   } catch (error) {
     console.error(error);

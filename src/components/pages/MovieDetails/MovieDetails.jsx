@@ -1,26 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getByID } from 'Api/FetchMovieDetails';
 import { NavLink } from 'react-router-dom';
 import css from './MovieDetails.module.css';
+import { useCallback } from 'react';
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
-  const { movieId } = useParams();
-  const navigate = useNavigate()
-  const location = useLocation()
-  console.log(location)
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movieId]);
+  const [navlocation, setNavLocation] = useState([]);
 
-  const fetchData = async () => {
+  const { movieId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const firstRender = useRef(true);
+  
+  useEffect(() => {
+    if (firstRender.current && location.state) {
+      setNavLocation(location.state);
+    } else {
+      setNavLocation('/');
+    }
+    firstRender.current = false;
+  }, [location.state]);
+
+  
+  const fetchData = useCallback(async () => {
     const data = await getByID(movieId);
     setMovie(data);
-  };
+  }, [movieId]);
+
+  useEffect(() => {
+    fetchData();
+  }, [movieId, fetchData]);
+
   const handleBack = () => {
-    navigate(location.state)
+    navigate(navlocation);
   };
   return (
     <>
@@ -40,13 +54,17 @@ export const MovieDetails = () => {
             <h2>{movie.release_date}</h2>
             <h2>{movie.vote_average}</h2>
             <div className={css.links}>
-              <NavLink to={`cast`}>Cast</NavLink>
-
-              <NavLink to={`review`}>Reviews</NavLink>
+              <NavLink to={`cast`} state={location}>
+                Cast
+              </NavLink>
+              <NavLink to={`review`} stat={location}>
+                Reviews
+              </NavLink>
             </div>
           </div>
         </div>
       )}
+
       <Outlet />
     </>
   );

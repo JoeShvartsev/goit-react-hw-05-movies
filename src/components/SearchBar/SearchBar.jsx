@@ -1,7 +1,7 @@
 import { React } from 'react';
 import css from './SearchBar.module.css';
 
-export const SearchBar = ({ onSubmit, setSearchParams, searchValue }) => {
+export const SearchBar = ({ onSubmit, setSearchParams, searchValue}) => {
   
   const handleChange = ({ target: { value } }) => {
     setSearchParams({ search: value });
