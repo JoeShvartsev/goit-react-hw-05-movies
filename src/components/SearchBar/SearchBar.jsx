@@ -1,8 +1,8 @@
-import { React } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'; 
 import css from './SearchBar.module.css';
 
-export const SearchBar = ({ onSubmit, setSearchParams, searchValue}) => {
-  
+export const SearchBar = ({ onSubmit, setSearchParams, searchValue }) => {
   const handleChange = ({ target: { value } }) => {
     setSearchParams({ search: value });
   };
@@ -27,3 +27,10 @@ export const SearchBar = ({ onSubmit, setSearchParams, searchValue}) => {
     </div>
   );
 };
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  setSearchParams: PropTypes.func.isRequired,
+  searchValue: PropTypes.string 
+};
+

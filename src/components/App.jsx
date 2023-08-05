@@ -7,7 +7,7 @@ import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { MovieDetails } from "./pages/MovieDetails/MovieDetails";
 import { Cast } from "./Cast/Cast";
 import { Review } from "./Review/Review";
-
+// import React, { lazy, Suspense } from 'react';
 // const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 // const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
 // const Layout = lazy(() => import("./Layaout/Layout"));

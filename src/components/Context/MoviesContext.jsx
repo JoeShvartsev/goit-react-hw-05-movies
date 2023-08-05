@@ -1,4 +1,5 @@
-import React, { createContext,useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from 'react';
+import PropTypes from 'prop-types'; 
 
 const MoviesContext = createContext();
 
@@ -13,4 +14,10 @@ export const MoviesProvider = ({ children }) => {
     </MoviesContext.Provider>
   );
 };
+
+
+MoviesProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 

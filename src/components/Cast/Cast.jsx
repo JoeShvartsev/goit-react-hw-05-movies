@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCast } from 'Api/fetchByCastDetails';
+import { useCallback } from 'react';
 
 export const Cast = () => {
   const [actors, setActors] = useState([]);
   const { movieId } = useParams();
+  
+  const fetchData =useCallback( async () => {
+    const data = await getCast(movieId);
+    setActors(data.cast);
+  },[movieId]);
 
   useEffect(() => {
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movieId]);
+    
+  }, [movieId, fetchData]);
 
-  const fetchData = async () => {
-    const data = await getCast(movieId);
-    setActors(data.cast);
-  };
+  
 
   return (
     <>
@@ -32,4 +35,4 @@ export const Cast = () => {
   );
 };
 
-// Cast.propTypes = {}
+

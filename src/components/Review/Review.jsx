@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'Api/fetchByReviewsDetails';
+import { useCallback } from 'react';
 
 export const Review = () => {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
+  
+  const fetchData =useCallback( async () => {
+    const data = await getReviews(movieId);
+    setReviews(data.results);
+  },[movieId]);
 
   useEffect(() => {
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movieId]);
+    
+  }, [movieId,fetchData]);
 
-  const fetchData = async () => {
-    const data = await getReviews(movieId);
-    setReviews(data.results);
-  };
+  
 
   return (
     <>
@@ -34,5 +37,4 @@ export const Review = () => {
 
 
 
-// Review.propTypes = {}
 
