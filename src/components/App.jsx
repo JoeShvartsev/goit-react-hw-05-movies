@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { HomePage } from "./pages/HomePage/HomePage";
 import { MoviesPage } from "./pages/MoviesPage/MoviesPage";
 import { Layout } from "./Layaout/Layout";
