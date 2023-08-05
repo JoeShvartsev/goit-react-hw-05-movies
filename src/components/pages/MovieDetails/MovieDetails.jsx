@@ -13,7 +13,8 @@ export const MovieDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const firstRender = useRef(true);
-  
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   useEffect(() => {
     if (firstRender.current && location.state) {
       setNavLocation(location.state);
@@ -23,7 +24,6 @@ export const MovieDetails = () => {
     firstRender.current = false;
   }, [location.state]);
 
-  
   const fetchData = useCallback(async () => {
     const data = await getByID(movieId);
     setMovie(data);
@@ -47,8 +47,13 @@ export const MovieDetails = () => {
           </div>
           <div>
             <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : defaultImg
+              }
+              width={250}
+              alt="poster"
             />
             <h1>{movie.title}</h1>
             <h2>{movie.release_date}</h2>
