@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 import { useCallback } from 'react';
 
-export const MovieDetails = () => {
+ const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
   const [navlocation, setNavLocation] = useState([]);
 
@@ -74,3 +74,4 @@ export const MovieDetails = () => {
     </>
   );
 };
+export default MovieDetails

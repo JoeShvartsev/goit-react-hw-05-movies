@@ -4,7 +4,7 @@ import { getTrandingDay } from 'Api/fetchTrendings';
 import { useMoviesContext } from 'components/Context/MoviesContext';
 import { useCallback } from 'react';
 
-export const HomePage = () => {
+const HomePage = () => {
   const { movies, setMovies } = useMoviesContext();
   const location = useLocation()
   const fetchData = useCallback( async () => {
@@ -30,6 +30,7 @@ export const HomePage = () => {
     </ul>
   );
 };
+export default HomePage
 
 
 

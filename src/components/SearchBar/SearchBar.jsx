@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; 
 import css from './SearchBar.module.css';
 
-export const SearchBar = ({ onSubmit, setSearchParams, searchValue }) => {
+const SearchBar = ({ onSubmit, setSearchParams, searchValue }) => {
   const handleChange = ({ target: { value } }) => {
     setSearchParams({ search: value });
   };
@@ -33,4 +33,5 @@ SearchBar.propTypes = {
   setSearchParams: PropTypes.func.isRequired,
   searchValue: PropTypes.string 
 };
+export default SearchBar
 

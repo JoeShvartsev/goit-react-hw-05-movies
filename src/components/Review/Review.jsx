@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getReviews } from 'Api/fetchByReviewsDetails';
 import { useCallback } from 'react';
 
-export const Review = () => {
+  const Review = () => {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
   
@@ -34,6 +34,7 @@ export const Review = () => {
     </>
   );
 };
+export default Review
 
 
 

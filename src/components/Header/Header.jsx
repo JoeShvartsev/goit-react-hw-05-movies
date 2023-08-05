@@ -1,9 +1,8 @@
 import React from "react";
-
 import { NavLink } from "react-router-dom";
 import css from "./Header.module.css";
 
-export const Header = () => {
+  const Header = () => {
   return (
     <div>
       <div className={css.navList}>
@@ -17,6 +16,6 @@ export const Header = () => {
     </div>
   );
 };
-
+export default Header
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; 
 import { NavLink, useLocation } from 'react-router-dom';
 
-export const MoviesList = ({ movies }) => {
+ const MoviesList = ({ movies }) => {
   const location = useLocation();
 
   return (
@@ -29,4 +29,5 @@ MoviesList.propTypes = {
     })
   ).isRequired,
 };
+export default MoviesList
 

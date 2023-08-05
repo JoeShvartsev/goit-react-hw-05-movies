@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback} from 'react';
-import { SearchBar } from 'components/SearchBar/SearchBar';
-import { MoviesList } from 'components/MoviesList/MoviesList';
+import  SearchBar  from 'components/SearchBar/SearchBar';
+import  MoviesList  from 'components/MoviesList/MoviesList';
 import { getByQuerry } from 'Api/fetchByQuerry';
 import {  useSearchParams } from 'react-router-dom';
 import { useRef } from 'react';
 
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   let searchValue = searchParams.get('search');
@@ -49,3 +49,4 @@ export const MoviesPage = () => {
     </div>
   );
 };
+export default MoviesPage

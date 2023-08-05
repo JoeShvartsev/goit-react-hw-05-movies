@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getCast } from 'Api/fetchByCastDetails';
 import { useCallback } from 'react';
 
-export const Cast = () => {
+const Cast = () => {
   const [actors, setActors] = useState([]);
   const { movieId } = useParams();
   const defaultImg =
@@ -39,5 +39,6 @@ export const Cast = () => {
     </>
   );
 };
+export default Cast
 
 
